@@ -9,5 +9,6 @@ namespace StudentResultManagementSystem.Server.Data
         public DBContext(DbContextOptions<DBContext> options) : base(options) { }
         public DbSet<StudentResultManagementSystem.Server.Models.Student> Student { get; set; } = default!;
         public DbSet<StudentResultManagementSystem.Server.Models.WeatherForecast> WeatherForecast { get; set; } = default!;
+        public DbSet<StudentResultManagementSystem.Server.Models.Subject> Subject { get; set; } = default!;
     }
 }

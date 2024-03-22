@@ -12,47 +12,47 @@ namespace StudentResultManagementSystem.Server.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class StudentsController : ControllerBase
+    public class SubjectsController : ControllerBase
     {
         private readonly DBContext _context;
 
-        public StudentsController(DBContext context)
+        public SubjectsController(DBContext context)
         {
             _context = context;
         }
 
-        // GET: api/Students
+        // GET: api/Subjects
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Student>>> GetStudent()
+        public async Task<ActionResult<IEnumerable<Subject>>> GetSubject()
         {
-            return await _context.Student.ToListAsync();
+            return await _context.Subject.ToListAsync();
         }
 
-        // GET: api/Students/5
+        // GET: api/Subjects/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Student>> GetStudent(int id)
+        public async Task<ActionResult<Subject>> GetSubject(int id)
         {
-            var student = await _context.Student.FindAsync(id);
+            var subject = await _context.Subject.FindAsync(id);
 
-            if (student == null)
+            if (subject == null)
             {
                 return NotFound();
             }
 
-            return student;
+            return subject;
         }
 
-        // PUT: api/Students/5
+        // PUT: api/Subjects/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutStudent(int id, Student student)
+        public async Task<IActionResult> PutSubject(int id, Subject subject)
         {
-            if (id != student.StudentID)
+            if (id != subject.SubjectID)
             {
                 return BadRequest();
             }
 
-            _context.Entry(student).State = EntityState.Modified;
+            _context.Entry(subject).State = EntityState.Modified;
 
             try
             {
@@ -60,7 +60,7 @@ namespace StudentResultManagementSystem.Server.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!StudentExists(id))
+                if (!SubjectExists(id))
                 {
                     return NotFound();
                 }
@@ -73,36 +73,36 @@ namespace StudentResultManagementSystem.Server.Controllers
             return NoContent();
         }
 
-        // POST: api/Students
+        // POST: api/Subjects
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Student>> PostStudent(Student student)
+        public async Task<ActionResult<Subject>> PostSubject(Subject subject)
         {
-            _context.Student.Add(student);
+            _context.Subject.Add(subject);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(GetStudent), new { id = student.StudentID }, student);
+            return CreatedAtAction("GetSubject", new { id = subject.SubjectID }, subject);
         }
 
-        // DELETE: api/Students/5
+        // DELETE: api/Subjects/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteStudent(int id)
+        public async Task<IActionResult> DeleteSubject(int id)
         {
-            var student = await _context.Student.FindAsync(id);
-            if (student == null)
+            var subject = await _context.Subject.FindAsync(id);
+            if (subject == null)
             {
                 return NotFound();
             }
 
-            _context.Student.Remove(student);
+            _context.Subject.Remove(subject);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        private bool StudentExists(int id)
+        private bool SubjectExists(int id)
         {
-            return _context.Student.Any(e => e.StudentID == id);
+            return _context.Subject.Any(e => e.SubjectID == id);
         }
     }
 }

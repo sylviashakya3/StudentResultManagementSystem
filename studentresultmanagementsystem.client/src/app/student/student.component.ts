@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { StudentService } from '../../services/student.service';
+import { environment } from '../../environments/environment';
 
 interface Student {
   studentID: number;
@@ -14,24 +16,28 @@ interface Student {
   templateUrl: './student.component.html',
   styleUrl: './student.component.css'
 })
-export class StudentComponent {
+export class StudentComponent implements OnInit {
   public students: Student[] = [];
-
-  constructor(private http: HttpClient) { }
+  private baseUrl: string = environment.baseUrl + 'api/';
+  constructor(private studentService: StudentService, private http: HttpClient) { }
 
   ngOnInit() {
     this.getStudents();
   }
-
+   
   getStudents() {
-    this.http.get<Student[]>('/api/Student/Index').subscribe(
-      (result) => {
-        this.students = result;
-      },
-      (error) => {
-        console.error(error);
-      }
-    );
+   
+    //this.http.get<Student[]>('/api/Student').subscribe(
+    //  (result) => {
+    //    this.students = result;
+    //  },
+    //  (error) => {
+    //    console.error(error);
+    //  }
+    //);
+    this.http.get<any[]>(this.baseUrl + `Students`, { responseType: 'json' }).subscribe((data: any[]) => {
+      this.students = data;
+    })
   }
 
 }

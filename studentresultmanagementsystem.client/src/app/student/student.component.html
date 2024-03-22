@@ -1,24 +1,55 @@
-<h1 id="tableLabel">Students</h1>
+<div class="container">
+  <div class="table-wrapper">
+    <div class="table-title">
+      <div class="row">
+        <div class="col-sm-8"><h2>Student Details</h2></div>
+        <div class="col-sm-4">
+          <button type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i> Add New</button>
+        </div>
+      </div>
+    </div>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Grade</th>
+          <th>Action</th>
 
-<p>This component demonstrates fetching data from the server.</p>
-
-<p *ngIf="!students"><em>Loading... Please refresh once the ASP.NET backend has started. See <a href="https://aka.ms/jspsintegrationangular">https://aka.ms/jspsintegrationangular</a> for more details.</em></p>
-
-<table *ngIf="students">
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Grade</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let student of students">
-      <td>{{ student.studentID }}</td>
-      <td>{{ student.firstName }}</td>
-      <td>{{ student.lastName }}</td>
-      <td>{{ student.grade }}</td>
-    </tr>
-  </tbody>
-</table>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let student of students">
+          <td>{{student.firstName}}</td>
+          <td>{{student.lastName}}</td>
+          <td>{{student.grade}}</td>
+          <td>
+            <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
+            <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+            <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+          </td>
+        </tr>
+        <tr>
+          <td>Peter Parker</td>
+          <td>Customer Service</td>
+          <td>(313) 555-5735</td>
+          <td>
+            <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
+            <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+            <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+          </td>
+        </tr>
+        <tr>
+          <td>Fran Wilson</td>
+          <td>Human Resources</td>
+          <td>(503) 555-9931</td>
+          <td>
+            <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
+            <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+            <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

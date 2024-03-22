@@ -1,0 +1,18 @@
+# For more info on HTTP files go to https://aka.ms/vs/httpfile
+@API_HostAddress = http://localhost:7244
+
+GET {{API_HostAddress}}/api/Students
+Accept: application/json
+
+GET {{API_HostAddress}}/api/Students/
+Accept: application/json
+
+PUT {{API_HostAddress}}/api/Students/
+Accept: application/json
+
+POST {{API_HostAddress}}/api/Students
+Accept: application/json
+
+DELETE {{API_HostAddress}}/api/Students/id
+Accept: application/json
+###
